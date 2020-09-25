@@ -1,0 +1,83 @@
+
+Apache Maven is a software project management and comprehension tool. 
+Based on the concept of a project object model (POM), 
+Maven can manage a project's build, reporting and documentation from a central piece of information. Using maven we can build and manage any Java based project. This tutorial will teach you how to use Maven in your day-to-day life of any project development using Java.
+
+
+Maven commands
+mvn -v
+
+mvn archetype:generate -DgroupId=com.p1.demo 
+-DartifactId=MyApp
+-DarchetypeArtifactId=maven-archetype-quickstart 
+-DinteractiveMode=false
+
+project--root element of POM
+modelVersion--specifies the model version
+artfactId--project id
+dependency
+scope--scope for maven such as complie,runtime,testes
+
+
+
+<dependencies>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>3.8.1</version>
+      </dependency>
+   </dependencies>  
+
+mvn clean install
+mvn complie
+mvn test
+mvn build 
+mvn install 
+
+
+
+validate 
+compile
+test
+package-- creats the jar file but not install it to local repo
+verify 
+install --compile,test complie,test ,build,install in local repo
+deploy
+
+
+
+steps 
+1.create a project 
+Although hardly a comprehensive list, these are the most common default lifecycle phases executed.
+
+validate: validate the project is correct and all necessary information is available
+compile: compile the source code of the project
+test: test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+package: take the compiled code and package it in its distributable format, such as a JAR.
+integration-test: process and deploy the package if necessary into an environment where integration tests can be run
+verify: run any checks to verify the package is valid and meets quality criteria
+install: install the package into the local repository, for use as a dependency in other projects locally
+deploy: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.
+There are two other Maven lifecycles of note beyond the default list above. They are
+
+clean: cleans up artifacts created by prior builds
+site: generates site documentation for this project
+
+
+Maven Command	Description
+mvn clean	Clears the target directory into which Maven normally builds your project.
+mvn package	Builds the project and packages the resulting JAR file into the target directory.
+mvn package -Dmaven.test.skip=true	Builds the project and packages the resulting JAR file into the target directory - without running the unit tests during the build.
+mvn install	Builds the project described by your Maven POM file and installs the resulting artifact (JAR) into your local Maven repository
+
+
+Maven Goals:
+compile:compile
+plugin:task
+mvn compile:compile
+
+https://www.youtube.com/watch?v=KNGQ9JBQWhQ
+
+
+
+

@@ -1,0 +1,575 @@
+https://www.youtube.com/watch?v=b5oQZdzA37I
+AM I Audible pls confirm ,
+
+version controlling and source code management.
+
+plan & code --git & git hub
+
+
+
+Version Control System
+===============================
+Version Control System (VCS) is a software that helps software developers to work together and maintain a 
+complete history of their work.
+
+Listed below are the functions of a VCS -
+
+Allows developers to work simultaneously.
+Does not allow overwriting each other’s changes.
+Maintains a history of every version.
+Following are the types of VCS -
+
+Centralized version control system (CVCS).
+Distributed/Decentralized version control system (DVCS).
+
+========================================================
+Distributed Version Control System
+Centralized version control system (CVCS) uses a central server to store all files and enables team 
+collaboration. 
+But the major drawback of CVCS is its single point of failure, i.e., failure of the central server. 
+Unfortunately, if the central server goes down for an hour, then during that hour, no one can collaborate at 
+all. And even in a worst case, if the disk of the central server gets corrupted and proper backup has not been taken, then you will lose the entire history of the project. Here, distributed version control system (DVCS) comes into picture.
+
+DVCS clients not only check out the latest snapshot of the directory but they also fully mirror the repository.
+If the server goes down, then the repository from any client can be copied back to the server to restore it.
+Every checkout is a full backup of the repository. Git does not rely on the central server and that is 
+why you can perform many operations when you are offline. 
+You can commit changes, create branches, view logs, and perform other operations when you are offline. 
+You require network connection only to publish your changes and take the latest changes.
+
+==================
+Features:
+Free and open source
+Fast and small
+Implicit backup
+Security
+====================================
+DVCS Terminologies
+Local Repository
+Every VCS tool provides a private workplace as a working copy. Developers make changes in their private 
+workplace and after commit, these changes become a part of the repository.
+
+Working Directory and Staging Area or Index
+The working directory is the place where files are checked out. In other CVCS, developers generally make
+ modifications and commit their changes directly to the repository. 
+But Git uses a different strategy. Git doesn’t track each and every modified file. Whenever you do commit an operation, Git looks for the files present in the staging area. Only those files present in the staging area are considered for commit and not all the modified files.
+
+Let us see the basic workflow of Git.
+
+Step 1 - You modify a file from the working directory.
+
+Step 2 - You add these files to the staging area.
+
+Step 3 - You perform commit operation that moves the files from the staging area. After push operation,
+ it stores the changes permanently to the Git repository.
+
+=========================================================================
+
+How to Install Git on Windows
+1.To use Git, you have to install it on your computer. Even if you have already installed Git, 
+it's probably a good idea to upgrade it to the latest version. 
+You can either install it as a package or via another installer or download it from its official site.
+Click on the package given on the page as download 2.23.0 for windows.
+
+2.Click on the downloaded installer file and select yes to continue
+
+Now the question arises that how to download the Git installer package. Below is the stepwise installation process that helps you to download and install the Git.
+
+How to download Git?
+Step1
+
+
+To download the Git installer, visit the Git's official site and go to download page. The link for the download page is https://git-scm.com/downloads
+
+
+====================================
+Git Commands
+
+git --version
+
+
+Git Tools.
+----------
+Git bash
+Git UI
+
+$git gui
+
+
+-----------------------
+======Directory Command==================
+
+mkdir <folder name> 
+cd <path of the directory>
+
+=====--------------------------------------
+Dell@Admin MINGW64 /g/ManishaGit
+$ mkdir Myprojct
+
+Dell@Admin MINGW64 /g/ManishaGit
+$ cd Myprojct
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct
+$
+=========================================
+To convert directory as repository
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct
+$ git init
+=============================================
+Add and Commit
+----------------
+create  a file in Myprojct
+example File1.txt
+add some text in  it
+Now save the changes in staging error
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git add File1.txt
+
+will add the File1.txt to staging Area.
+
+To add all files in the staging error use
+-----------------------------------------------------
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git add .
+.-->Period 
+
+$git add File*
+
+To commit the files in Local Repository
+---------------------------------------
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git commit -m "First Commit"
+[master (root-commit) 1aef2b1] First Commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 File1.txt
+
+Git commit
+The above command will prompt a default editor and ask for a commit message.
+Press the Esc key and after that 'I' for insert mode. Type a commit message whatever you want.
+Press Esc after that ':wq' to save and exit from the editor. Hence, we have successfully made a commit.
+
+Git commit -a
+The commit command also provides -a option to specify some commits. It is used to commit the snapshots
+of all changes. This option only consider already added files in Git.
+
+Git commit -m "First commit"
+
+The -m option of commit command lets you to write the commit message on the command line.
+This command will not prompt the text editor.
+
+
+
+
+To check the status 
+--------------------
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+
+Now do some changes in files 
+add the files to staging area and check the status
+
+example :do changes in File2
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git add .
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   File2.txt
+
+===========================Config Command =====================================================
+configure the user who will use the local repository by setting name and email 
+Git Config command can run globally or in  the current directory
+
+Create a new user:
+$ git config --global user.name "Manisha Mane"
+git config --global user.email  "pimplemp@rediffmail.com"
+
+Or locally
+$ git config  user.name "Manisha Mane"
+git config  user.email  "pimplemp@rediffmail.com"
+
+
+$git config --list
+This command will list all your settings. See the below command line output.
+
+Output
+Dell@Admin MINGW64 /
+$ git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+credential.helper=manager
+user.name=Manisha Mane
+gui.recentrepo=G:/ManishaGit/localrepository
+===================Cloning========================
+
+In Git, cloning is the act of making a copy of any target repository. 
+The target repository can be remote or local. You can clone your repository from the remote repository 
+to create a local copy on your system. Also, you can sync between the two locations.
+$ git clone https://github.com/Manisha-atos/NewRepo.git 
+
+
+=======================Branching =======================
+
+Branch --another line of development.
+default is the Master Branch .
+we can create a duplicate copy of current branch do the new changes and then update the original branch
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git status
+On branch master
+
+New Develop Branch is created 
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git branch develop
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git branch
+  develop
+* master
+to switch to the develop branch for furtherr development 
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git checkout develop
+Switched to branch 'develop'
+
+Now do changes in the File2.txt
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git status
+On branch develop
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   File2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git commit -am "Develop branch commit"  // -am will do add and commit in 1 command
+[develop bc636f7] Develop branch commit
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git status
+On branch develop
+nothing to commit, working tree clean
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git log
+commit bc636f7027217fdca3c05e63f9cace76c4f88c60 (HEAD -> develop)
+Author: Manisha Mane <pimplemp@rediffmail.com>
+Date:   Wed May 6 22:49:27 2020 +0530
+
+    Develop branch commit
+
+commit c5bfeea40242312eda3fb98dbcb766e75363ee2c (master)
+Author: Manisha Mane <pimplemp@rediffmail.com>
+Date:   Wed May 6 22:44:24 2020 +0530
+
+    master branch
+
+commit e11fce739e937c675e9cb0d57ed31a551761436e
+Author: Manisha Mane <pimplemp@rediffmail.com>
+Date:   Wed May 6 22:12:53 2020 +0530
+
+    second commit
+
+commit 7d72249018c3c5cdbae51c20d7629a49eb2c0d61
+Author: Manisha Mane <pimplemp@rediffmail.com>
+Date:   Tue May 5 23:14:39 2020 +0530
+
+
+$git checkout master // will go to the snapshot which we have created earlier
+
+create a new branch feature
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git checkout feature/new-feature
+error: pathspec 'feature/new-feature' did not match any file(s) known to git
+ As the branch is nit created 
+
+we can create and checkout the branch in single command
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git checkout -b feature/new-feature		//-b is branch 
+Switched to a new branch 'feature/new-feature'
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$
+
+Flow 
+Master==>develop==>feature/newfeature
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$ git status
+On branch feature/new-feature
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   File2.txt
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$ git commit -am "done with new feature"
+[feature/new-feature 61bb5ee] done with new feature
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+https://www.youtube.com/watch?v=JTE2Fn_sCZs
+==================================================================================
+
+Merging the branches 
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git branch
+  develop
+  feature/new-feature
+* master
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (master)
+$ git checkout develop
+Switched to branch 'develop'
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git branch
+* develop
+  feature/new-feature
+  master
+
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git checkout feature/new-feature
+Switched to branch 'feature/new-feature'
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$ git checkout develop
+Switched to branch 'develop'
+
+
+$ git branch -d<branch name> 
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (develop)
+$ git merge  feature/new-feature
+Updating bc636f7..61bb5ee
+Fast-forward
+ File2.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+
+https://www.youtube.com/watch?v=0iuqXh0oojo
+
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+--Delete a branch 
+git branch -d featuer/new-featuer
+
+or 
+
+git branch -D featuer/new-featuer i not safe as it doesnt show the unmarge branch
+
+master-->develop-->feature/new-feature/manisha
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (manisha)
+$ git checkout feature/new-feature
+Switched to branch 'feature/new-feature'
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$ git branch -d manisha
+error: The branch 'manisha' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D manisha'.
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$ git merge manisha
+Updating 61bb5ee..04a26d5
+Fast-forward
+ File2.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$ git branch -d manisha
+Deleted branch manisha (was 04a26d5).
+h n
+
+git branch b1
+-- addedccode
+  git branch br3
+--added code
+
+br3--merge br1
+
+git branch
+git branch br1
+git checkout br1
+
+
+git branch -d br3
+git branch -D br3-- forcefully delete the branch
+
+
+
+---connecting with remote repository git ADD and PUSH-----
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$ git remote add origin https://github.com/Manisha-atos/Git_Rep.git
+
+https://github.com/Manisha-atos/Devops27Aug.git
+--cloning remote repo into local repository
+
+Dell@Admin MINGW64 /g/ManishaGit/Myprojct (feature/new-feature)
+$ cd /g
+
+Dell@Admin MINGW64 /g
+$ mkdir git-repo
+
+Dell@Admin MINGW64 /g
+$ cd /git-repo
+bash: cd: /git-repo: No such file or directory
+
+Dell@Admin MINGW64 /g
+$ cd g/git-repo
+bash: cd: g/git-repo: No such file or directory
+
+Dell@Admin MINGW64 /g
+$ cd /g/git-repo
+
+Dell@Admin MINGW64 /g/git-repo
+$
+
+Dell@Admin MINGW64 /g/git-repo
+$ git clone https://github.com/Manisha-atos/Git_Rep.git
+Cloning into 'Git_Rep'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+
+----Pull the new changes from remote to local-------------------
+git remote -v
+git remote add origin https://github.com/Manisha-atos/NewRepo.git
+git remote remove origin
+
+
+
+Instead of removing and re-adding, you can do this:
+
+git remote set-url origin git://https://github.com/Manisha-atos/Devops27Aug.git
+
+
+
+Push to remote repo
+
+1. Add remote orgin
+2. local -->Push-->Remote
+	git push origin master
+	git push -f origin master
+
+	git push --all
+
+3.Added new changes to Github repo
+	remote-->local
+	git pull
+
+
+	
+	
+
+
+
+
+
+Dell@Admin MINGW64 /g/git-repo/Git_Rep (master)
+$ git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 714 bytes | 2.00 KiB/s, done.
+From https://github.com/Manisha-atos/Git_Rep
+ * branch            master     -> FETCH_HEAD
+   011f800..4c95c63  master     -> origin/master
+Updating 011f800..4c95c63
+Fast-forward
+ GitCommands.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+
+====================================
+https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+
+====================
+Check your Remote
+To check the configuration of the remote server, run the git remote command. The git remote command allows accessing the connection between remote and local. If you want to see the original existence of your cloned repository, use the git remote command. It can be used as:
+
+Git Environment Setup
+The environment of any tool consists of elements that support execution with software, hardware, and network configured. It includes operating system settings, hardware configuration, software configuration, test terminals, and other support to perform the operations. It is an essential aspect of any software.
+
+It will help you to understand how to set up Git for first use on various platforms so you can read and write code in no time.
+
+
+
+
+
+You can customize your Git output to view a personalized color theme. The git config can be used to set these color themes.
+
+Color.ui
+
+$ Git config -global color.ui true  
+The default value of color.ui is set as auto, which will apply colors to the immediate terminal output stream. You can set the color value as true, false, auto, and always.
+
+Git configuration levels
+-------------------------
+The git config command can accept arguments to specify the configuration level. The following configuration levels are available in the Git config.
+local--default configuration
+global
+system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Git clone command
+====================
+This command is used to make a copy of a repository from an existing URL. If I want a local copy of my repository from GitHub,
+
+
+Dell@Admin MINGW64 /g/ManishaGit/Demo (master)
+$ ls -a
+./  ../  .git/  File1.txt
+
+

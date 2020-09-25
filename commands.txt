@@ -1,0 +1,16 @@
+git version
+git add file1
+git add .
+git commit -m "first commit"
+git status
+git log
+git config --global user.name "Manisha Mane"
+git config --global user.email  "pimplemp@rediffmail.com"
+git config --list
+git branch develop
+git checkout develop
+git commit -am "Develop branch commit" 
+git checkout -b feature/new-feature  /create and checked out barnch
+git merge  feature/new-feature
+git brancg -d feature/new-feature//-d delete 
+6335 5783  552  240 80 550*
