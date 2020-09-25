@@ -1,0 +1,824 @@
+Day 1 ---> Introduction,Installation , basic Job
+Day 2----> Basic cong, Auth and auth,Job chaning, Git Integration, views , Tools
+Day 3----> More plugins, Jobs in detail, Maven Integration
+Day 4----> Jenkins pipeline
+
+Jenkins Beginner Session 1 - Introduction and Getting Started
+==================================================
+What is CI?
+Continuous integration systems are a vital part of any Agile team because they help enforce 
+the ideals of Agile development Jenkins,
+a continuous build tool, enables teams to focus on
+their work by automating the build, artifact management,and deployment processes.
+
+ At a regular frequency (ideally at every commit), the system is:
+ Integrated : All changes up until that point are combined into the project
+ Built: The code is compiled into an executable or package Tested Automated test suites are run
+ Archived:  Versioned and stored so it can be distributed as is, if desired
+ Deployed: Loaded onto a system where the developers can interact with it 
+
+ CI – Benefits
+ Immediate bug detection
+ No integration step in the lifecycle
+ A deployable system at any given point
+ Record of evolution of the project 
+
+Extra ref: https://codeship.com/continuous-integration-essentials
+ ------------------------------------------------------------
+Continuous Integration with Jenkins
+ 
+Let us imagine a scenario where the complete source code of the application was built and then deployed on a test server for testing:
+
+1--->First, a developer commits the code to the source code repository.
+2--->Meanwhile, the Jenkins server checks the repository at regular intervals for changes.
+Soon after a commit occurs, the Jenkins server detects the changes that have occurred in the source code repository.
+3--->Jenkins will pull those changes and will start preparing a new build.
+4--->If the build fails, then the pertinent team will be notified.
+5--->If the build is successful, then Jenkins deploys the build in the test server.
+------------------------------------------------------------------
+You could configure the pipeline (the script to run) to create the build with several steps:
+Prepare, test (unit and integration tests), package, publish, deploy.
+
+After running it, Jenkins generates a feedback, if these constraints are ok, the artifact is valid ( artifact is a source code compiled for testing). And then Jenkins notifies the developers about the build and test results.
+Jenkins will continue to check the source code repository for further changes made in the
+source code, and the whole process will keep on repeating (functional tests).
+-----------------------------------------------------------------
+What is Jenkins?
+Jenkins is an open source (automation server) Continuous Integration server capable of orchestrating 
+a chain of actions that help to achieve the Continuous Integration process (and not only) 
+in an automated fashion.
+
+Jenkins is free and is entirely written in Java. Jenkins is a widely used application around the world that has around 300k installations and growing day by day.
+
+It is a server-based application and requires a web server like Apache Tomcat.
+The reason Jenkins became so popular is that of its monitoring of repeated tasks which arise during the development of a project. 
+
+For example, if your team is developing a project, Jenkins will continuously test your project builds and show you the errors in
+early stages of your development.
+
+By using Jenkins, software companies can accelerate their software development process, as Jenkins can automate build and test at a rapid rate. Jenkins supports the complete development lifecycle of software from building, testing, documenting the software, deploying and other stages of a software development lifecycle.
+
+Jenkins 
+  - java application(platform independent)
+  - used for continuous integration and continuous delivery
+
+Jenkins’ core functionality and flexibility allow it to fit in a variety of environments and can help streamline the development process for all stakeholders involved 
+summary:
+Jenkins is a powerful application that allows continuous integration and continuous delivery of projects, regardless of the platform you are working on. It is a free source that can handle any kind of build or continuous integration. You can integrate Jenkins with a number of testing and deployment technologies.
+-----------------------------------------------------------------------	
+Topic: Installing Jenkins
+
+Install Java Version 8 – Jenkins is a Java based application, hence Java is a must.
+Install Apache Tomcat Version 9 – Tomcat is required to deploy Jenkins war file.
+Download Jenkins war File – This war is required to install Jenkins.
+Deploy Jenkins war File – Jenkins war file needs to be deployed using Tomcat to run Jenkins.
+Install Suggested Plugins – Install a list of plugins suggested by Jenkins.
+
+--------------------------------
+or 
+
+Step 1 : Download Jenkins war file - https://jenkins.io/
+https://updates.jenkins-ci.org/download/war/
+
+Step 2 : Place the war file into any location on your system
+Step 3 : goto command prompt (windows) | terminal (mac)
+   - goto folder where jenkins.war is
+   - java -jar jenkins.war
+   - java -jar jenkins.war --httpPort=9090
+Step 4 : goto browser - http://localhost:8080 (Jenkins window should show up)
+Step 5 : install required plugins
+Step 6 : get started with Jenkins 
+
+Note: By default Jenkins runs at port 8080. To run jenkins on a different port.
+Use the following command at command prompt:
+
+--Method 1: Run Jenkins in a standalone mode
+https://updates.jenkins-ci.org/download/war
+
+user name : admin
+
+change the default password using configire option of the logged in user.
+-------------------------------------------------------------------------
+There are two ways of starting Jenkins Server
+--Method 1: Run Jenkins in a standalone mode 
+
+java -jar jenkins.war
+or
+java -jar jenkins.war --httpPort=9090
+
+--Method 2:Running via a web Server like Tomcat
+______________________________________________________
+To see hidden files/folders on mac:
+1. Exit Finder
+2. On terminal - defaults write com.apple.finder AppleShowAllFiles TRUE
+3. Press option/alt - right click finder - relaunch
+===================================================
+How to setup Jenkins on Tomcat
+Link to download :https://tomcat.apache.org/download-90.cgi
+
+Why?
+Running Jenkins standalone (jetty/winstone) vs Running Jenkins on Tomcat
+
+Pre-requisite
+***Tomcat 5 or above***
+***java(7 or above) should be available***
+(https://www.youtube.com/watch?v=FqpmH...)
+
+E:\New Volume Manisha E Drive\atos-syntel\apache-tomcat-8.5.53\webapps
+Step 1 : Download Tomcat 
+Step 2 : Unzip and place tomcat folder at any location
+Step 3 : Copy/Place the jenkins.war file inside tomcat/webapps folder
+Step 4 : Goto commandpromt (cmd) - windows  |  terminal - mac
+  - goto tomcat/bin directory
+  - make all files executable : chmod +x *.sh
+
+In case of windows this command will not work. This step might not be needed if you are on windows. Else you can right click on the file/folder goto security tab and change the permissions.
+
+Can watch -   
+TOMCAT - How to install and run on Windows | Change Port | Run app
+https://youtu.be/ZIIkrn6LHW0?list=PLh...
+
+*** To change the default port of tomcat modify the D:\softwares\Tomcat 8.0\conf\server.xml file.Change at two places in the connector tag.
+
+Step 5 : Start Tomcat : ./startup.sh
+  (to shutdown tomcat : ./shutdown.sh)
+	--in windows use startup command to start and shutdown command to shutdown.
+search for the port 8080 change it with any other portno like 8082
+ in server.xml file on conf folder in tomcat
+
+Step 6 : verify if tomcat started : browser - http://localhost:8080
+		or
+	   --http://localhost:8082
+
+Step 7 : verify if jenkins is running on tomcat : http://localhost:8080/jenkins
+		http://localhost:8082/jenkins
+
+*** To start jenkins (standalone) on a diff port***
+java -jar jenkins.war --httpPort=9090
+
+problem : if JAVA_HOME or JRE_HOME is not set , the tomacat server will not start.
+	 --Add in the env variable JAVA_HOME=path of jdk (dont include bin)
+
+**Initial admin password can be found at: C:\Users\Chaya Nikam\.jenkins\secrets
+=================================================
+Jenkins Beginner Session 3 - How to change Home Directory
+Jenkins Home Directory contains:
+
+1. All configurations
+2. Plugins
+3. Jobs details
+4. Logs
+
+Why:
+-To move jenkins home dir to a location that has enough disk space
+-Project requirements
+default location is:  eg. C:\Users\CN5057098\.jenkins
+
+If you have installed jenkins on windows through msi file then read this - 	.................http://tech.nitoyon.com/en/blog/2014/...
+
+Step 1 : Check your current home directory
+	--start Jenkins, can be standalone or through tomcat. 		http://localhost:8082/jenkins/
+	-- click Manage Jenkins--> configure system. You will see the very first option Home dir
+	  
+Step 2 : Create a new folder (which will be new home dir)
+	 --create a new folder preferebly the folder in which you have jenkins.war
+	  eg. my jenkins.war is in D:\0Chhaya's D Drive\Chhaya\jenkins
+	 --I am creating a new folder chhaya_jenkins_home
+	
+Step 3 : Copy all data from old dir to new dir
+ --copy all folders and files from old home dir that is C:\Users\CN5057098\.jenkins to D:\0Chhaya's D Drive\Chhaya\jenkins\chhaya_jenkins_home
+
+Step 4 : change env variable - JENKINS_HOME and set to new dir
+    --Windows - change env variable/create a new one
+	JENKINS_HOME=D:\Chhaya's D Drive\Chhaya\jenkins\chhaya_jenkins_home
+
+  --Mac - goto terminal
+ export JENKINS_HOME=/Users/raghav/Desktop/Tools/Jenkins/JenkinsHome/
+
+Step 5 : restart Jenkins
+____________________________________________________________
+
+To see hidden files/folders on mac:
+1. Exit Finder
+2. On terminal - defaults write com.apple.finder AppleShowAllFiles TRUE
+3. Press option/alt - right click finder - relaunch
+========================================================
+How to change the default (autogenerated password for admin)
+On the home screen --> for the username logged in ---> click on the drop down -->configure ---> change the password ---> password and confirm password.
+========================================================
+Jenkins Beginner Session 4 - How to use CLI - command line interface
+
+Why should you use the command line
+--easier
+--faster
+--memory management (efficient)
+--Continuous Integration
+
+Step 1 : start Jenkins
+	 move to the folder where your jenkins.war is
+	 from cmd line.
+	  java -jar jenkins.war --httpPort=9090
+
+Step 2 :  Go to Manage Jenkins -> Configure Global Security ->Enable Security Checked
+
+            Authorization -> Logged-in Users can do anything -> Checked allow anonymous read access
+		Apply -->save
+--optional
+--in the logged in users configuration  		
+SSH Public Keys--> assign a public key eg. type 1234
+
+
+Step 3 :
+Manage Jenkins ---> Jenkins ClI
+ goto - http://localhost:9090/cli/
+9090 --> port at which jenkins is running
+
+Step 4 : download jerkins-cli jar. Place at any location.
+
+Step 5 : test the jenkins command line is working
+eg. java -jar jenkins-cli.jar -s http://localhost:9090/ version
+
+Note: While executing the commands on cli if it asks you for passphrase then login to your jenkins.
+--At the top you will find the logged in username . select the configure option for that user.
+--in the SSH public key provide some passphrase like 1234
+provide this key in the command line
+.
+==========================================================
+Jenkins Beginner Session 5 - How to create Users + Manage + Assign Roles
+
+Jenkins authentication and authorization
+
+--start jenkins with admin user.
+ In case you forget your admin password you can get your password from D:\0Chhaya's D Drive\Chhaya\jenkins\chhaya_jenkins_home\secrets\initialadminpassword file in secrets folder.
+placed in your jenkins home directory.
+
+Today we will learn:
+———————————
+How to create New Users
+How to configure users
+How to create new roles
+How to assign users to roles
+How to Control user access on projects
+
+Step 1 : Create new users
+	 Manage Jenkins---> Manage users --> create user
+	 create two users user1 and user2
+	 Now to test logout from admin and login with new user
+
+Step 2 : Configure users
+	  In the right top corner you will see the logged in user --> click on the small down arrow for the logged in user ---> select configure.
+   This option lets you change the username,get the api token (we will see later in the session)email,password,ssh key etc for the the logged in user.
+
+Note that this logged in user will have less permissions as compared to admin
+-------------
+Step 3 : Create and manage user roles Roles Strategy Plugin - download - restart jenkins
+  There are different ways to install the plugin 
+ Method 1: In the browser search for "Role strategy Plugin"
+https://wiki.jenkins.io/display/JENKINS/Role+Strategy+Plugin
+   download the jpi file from here. The downloaded plugin can then be uploaded to jenkins using the Mange Jenkins---> Manage Plugin option-->restart Jenkins
+  Method 2: Manage Jenkins--> Manage Plugin --> search the text "Role" --> select the "Role based Authorization strategy" --->install without restart/download now and install after restart --> Restart Jenkins        
+
+Step 4 : Applying the role based Authorization
+Login as admin
+Manage Jenkins -> Configure Global Security ->check Enable security->Authorisation -> Role Based Strategy --> Apply and save.
+
+Now Login as user1--> check user1 is missing the over all permission
+again login as admin
+
+Step 5 : Create Roles and Assign roles to users
+  Manage Jenkins --> Manage and assign roles 
+Manage roles screen shows three types of roles global,project and slave roles.
+--create one global role "employee" 
+	--select read from overall section 
+        --select all from view section 
+   This means employee has overall view and read access.
+
+--create two project roles [These roles are specific to project]
+	Developer and Tester
+--Assign all permission to Developer role , pattern as Dev.* means any project name 
+starting with Dev and anything after that.He cannot do anything with other projects.
+Similarly the Tester will have permission to Test the projects starting with the name Test.
+--Apply-->save
+
+Now select the Assign Roles option.
+--> in the text box group/users to add user1 and user2 to employee role.
+--> In the items roles aka project roles section add user1 to Developer and user2 to Tester.
+-->Apply-save
+
+Step 6 : Validate authorization and authentication are working properly
+ select New Item --> item name as DevProject1 --> Freestyle project --> Apply save
+ select New Item --> item name as TestProject1 --> Freestyle project --> Apply save 
+
+Now logout and login as user1 --> he has developer role --> should be able to see only developer project
+
+Now logout and login as user2 --> he has tester role --> should be able to see only tester project
+
+Note that for both the users Manage Jenkins and other admin options are not avaialble as they belong to employee role.
+---------------------------------------
+My users are devuser and testuser
+
+
+========================================
+Jenkins Beginner Session 6 - Basic Configurations
+
+Step 1 : Goto Manage Jenkins - Configure System
+	--you can see your home directory here
+	--system Message :Notify the users with some message. You can put a html message,
+	Note : if html is not shown go to the option manage jenkins-->configure global settings -->Markup formatter ---> safe html
+
+	--#of executors :Number of parallel executions this instance of jenkins will run		
+In jenkins you can make a instance of Jenkins as a master node and other machines can be added to this instance. 
+The execution can place on other nodes . 
+To add a new machine used for distributed build 
+   Manage jenkins--> Manage job nodes -->New Node -->
+     
+	--Restrict naming project : ensures that new projects should be properly named. 
+eg pattern : Test.* --> will take only the name that starts with 					Test.
+	--global properties:some variables that can be used by all the jobs.Environment variables.
+	--Jenkins URL: you can give your IP address in place of localhost.
+	--shell : by def Jenkins has the bash shell on which it executes the command.
+If you want all the commands to execute on other shell. like in windows cmd.exe.complete path of cmd.exe is required
+
+Step 2 : Get a basic understanding of common/basic configurations
+============================================
+Jenkins Beginner Session 7 - Getting started with JOBS
+
+Today we will learn:
+———————————
+1. How to create a basic JOB in Jenkins
+2. Basic job configurations
+2. How to run the Job remotely
+4. How to chain Job Execution
+
+Step 1 : Jenkins - New Item - provide a name - freestyle project
+	poll SCM --> means as soon as any changes are done in SCM like github, build will take in repository the job will run.
+	build periodically--> We can assign some expr. Based on this expr our job will run periodically.You can create your schedule and jenkins will suggest the meaning of the schedule expression.
+
+ eg. H * * * *
+explaination: Would last have run at Thursday, October 24, 2019 10:24:37 AM IST; would next run at Thursday, October 24, 2019 11:24:37 AM IST.
+ eg. * * * * * 
+  means every minute.
+read the help part for more detail
+http://www.scmgalaxy.com/tutorials/setting-up-the-cron-jobs-in-jenkins-using-build-periodically-scheduling-the-jenins-job/
+
+ Demo : running a job every minute that executes the windows date command
+
+         In the general tab.
+		--> provide the desc 
+		--> SCM --> None
+		--> Build triggers --> Build periodically --> * * * * *	
+		--> Build --> execute windows batch command --> dir
+		--> Apply ---> save
+     A Not executed job will show a grey color, successfully build job will show blue color. 
+  To build the job --> click on small arrow in the project name --> build now .
+  select the created build --> console output
+
+  The w (Whether) column in the main project listing (My views)
+The w icon changes based on the result of last 5 build.
+  a. If any build fails from the last 5 build , it changes to cloud icon 
+  b. If all builds are successful it shows the sun icon.
+-----------------------
+The format for Job is as follows:
+
+MINUTE (0-59), HOUR (0-23), DAY (1-31), MONTH (1-12), DAY OF THE WEEK (0-6)
+
+The letter H, representing the word Hash can be inserted instead of any of the values. It will calculate the parameter based on the hash code of you project name.
+
+This is so that if you are building several projects on your build machine at the same time, let’s say midnight each day, they do not all start their build execution at the same time. Each project starts its execution at a different minute depending on its hash code.
+
+You can also specify the value to be between numbers, i.e. H(0,30) will return the hash code of the project where the possible hashes are 0-30.
+
+Examples:
+
+Start build daily at 08:30 in the morning, Monday - Friday: 30 08 * * 1-5
+
+Weekday daily build twice a day, at lunchtime 12:00 and midnight 00:00, Sunday to Thursday: 00 0,12 * * 0-4
+
+Start build daily in the late afternoon between 4:00 p.m. - 4:59 p.m. or 16:00 -16:59 depending on the projects hash: H 16 * * 1-5
+
+Start build at midnight: @midnight or start build at midnight, every Saturday: 59 23 * * 6
+
+Every first of every month between 2:00 a.m. - 02:30 a.m.: H(0,30) 02 01 * *
+
+---------------
+Step 2 : How to trigger the job remotely/via URL
+How one Jenkins Trigger a job on a remote jenkins
+
+Trigger a build via URL means that the Jenkins endpoint is open to anyone who can hit the server. 
+Naturally, that means you want to ensure you’ve secured this endpoint as much as possible
+
+--go to the project configuration 
+--build triggers --> trigger builds remotely --> When you select this option shows you a URL --> copy this "JENKINS_URL/job/TestProject1/build?token=TOKEN_NAME" paste it in the browser replace jenkins_url to localhost:9090 and token name can be any thing for example 1234. So the complete url is now 
+http://localhost:9090/me/my-views/view/all/job/TestProject1/build?token=1234
+--provide the same token in the Authentication token text box .
+--Apply save
+--Now enter (run ) this url in the browser.
+--check the last build options (job executed by remote)
+--In real scenario the localhost will be any machine ip where jenkins is running. 
+
+
+-------------------
+Step 3 : How to chain job executions
+ --  Create new projects eg. Test2 -->build --> execute windows batch command --> dir -- apply save.
+ --  Create new projects eg. Test3 -->build --> execute windows batch command --> java -version --> apply save
+
+--Go to the configuration option of project Test2 --> Build Triggers -->Build after other projects -->provide the name as TestProject1 (the name of the project before Test2 should run)
+--In the same Test2 project --> post build actions --> project to build --> Test3 (Name of the project to run after Test2)
+--> run the Test2 and check the build history
+
+====================================== .
+Jenkins Beginner Session 8 - Jenkins integration with GIT (SCM)
+
+Today we will learn
+———————————
+1. Create a java program and run it through command line
+2. Create a Jenkins job to run the java program
+3. Add this program/project to Git
+4. Jenkins - add git plugin
+5. Configure Jenkins job to trigger the execution when a change is pushed to GitHub
+__________________________________________________________
+
+Step 1 : Create a java program(This can be any programming language code)
+
+--Hello.java
+  public class Hello{
+	public static void main(String a[])
+	{
+		for(int i=1;i<=10;i++)
+		{
+		  System.out.println("Hello world");
+		}
+	}
+}  
+
+save in D:\JavaWorkspace\HelloApp
+
+Step 2 : Compile from command line
+   javac “name of .java class”
+      java “name of class without extension .java”
+
+Step 3 : Create a Jenkins job to run this program to perform a simple test
+  --New item-->HelloWorld-->Freestyle.
+  --build-->Execute windows batch command
+          cd D:\JavaWorkspace\HelloApp
+	   javac Hello.java
+	   java Hello
+  --save --apply --build 
+
+Step 4 : Add the project to Git and GitHub
+ Make sure that git plugin is installed 
+
+git init
+git pull https://github.com/pradeepch82/jenkis-programs.git
+git status
+git add .
+git commit -m "Hello World added successfully"
+git remote add origin https://github.com/pradeepch82/jenkis-programs.git
+git push -u origin master
+
+--------------------------
+ https://github.com/chhayanikam/jenkisdemo.git
+
+My git steps
+1. copy the project location folder eg. D:\JavaWorkspace\HelloApp
+2. open the git cmd
+initializa the git repo
+D:\JavaWorkspace\HelloApp>git init 
+check the current status , files not ready for git push red color
+D:\JavaWorkspace\HelloApp>git status
+Now add all the files in the current dir
+D:\JavaWorkspace\HelloApp>git add .
+Again check the status, shows green color
+D:\JavaWorkspace\HelloApp>git status 
+Now perform the git commit
+D:\JavaWorkspace\HelloApp>git commit -m "project files commited"
+Now lets push the files to git repo
+Login to your github account
+create a new repository eg. jenkinsdemo.
+copy the location of the repository /move inside the created repository.
+git@github.com:chhayanikam/jenkinsdemo.git
+D:\JavaWorkspace\HelloApp>git remote add origin git@github.com:chhayanikam/jenkinsdemo.git
+D:\JavaWorkspace\HelloApp>git push -u origin master
+
+Now lets integrate our project with git
+ --configure the project -->source code management -->Git --> provide the repository URL eg . https://github.com/chhayanikam/jenkinsdemo.git
+ --build triggers -->poll SCM -->***** (check repo for every min change)
+  --save --apply
+  --now make some changes to the source file
+===================================================
+Jenkins Beginner Session 9 - How to use CATLIGHT (Jenkins Build Monitor)
+Today we will learn :
+How to use CATLIGHT
+(status notifier for jenkins)
+
+What is CATLIGHT
+https://catlight.io/
+
+How to use CATLIGHT
+==========================================================================
+Jenkins Beginner Session 10 - What is Automated Deployment (Step by Step)
+What is Automated Deployment ?
+Refer to ppt
+
+Main stages in
+Continuous delivery and deployment pipeline
+
+1. BUILD
+2. DEPLOY
+3. TEST
+4. RELEASE
+
+Lets see ...
+A real world Project SetUp
+
+Automated Deployment is the process of Automating the deployment process in a
+ Continuous Delivery system
+
+Build - Deploy - Test - Release
+
+Jenkins Beginner Session 11 - How to do Automated Deployment (Step by Step)
+===================================================================================
+Topic: How to do Automated Deployments with Jenkins ?
+
+Step 1
+Start Jenkins
+
+Step 2
+Install Plugin
+(Deploy Plugin)
+https://wiki.jenkins-ci.org/display/J...
+
+You can also goto your Jenkins on browser and
+- Manage Jenkins - Plugins Manager - Click on Available tab and search for deploy to container
+Add to Jenkins
+
+Step 3
+Create a Build JOB in Jenkins
+
+Step 4
+Add Post-build Action Deploy war/ear to container
+(add values to the fields) 
+
+download the sample war file - https://tomcat.apache.org/tomcat-6.0-...
+copy the sample.war in the job project eg. C:\Users\CN5057098\.jenkins\workspace\AutomatedDeploymentTest
+If you have set the home directory for jenkins locate for workspace
+Note: project folder will be available in workspace only after 1 build 
+
+Step 5
+In tomcat-users.xml add user for DEPLOYMENT
+user username="deployer" password="deployer" roles="manager-script" /
+eg.
+ <role rolename="manager-gui"/>
+                    <role rolename="manager-script"/>
+                    <user username="deployer" password="deployer" roles="manager-gui,manager-script" />
+</tomcat-users>
+strat the tomcat server
+
+Step 6
+Run and Validate
+http://localhost:8082/sample
+where 8082 is my port for tomcat
+
+Refer to the Lab word document for detail steps
+=============================================================================
+Notifications - How to send Email from Jenkins
+Manage Jenkins - Configure System - Email Notifications
+
+ SMTP Server  : smtp.gmail.com
+ Use SSL :True
+ 
+SMTP Port :465 or 25
+Refer to the Lab word document for detail steps
+=======================================================================
+What is BLUE OCEAN (How to get started)
+
+What is Jenkins Blue Ocean?
+How to get started with Blue Ocean ?
+
+Blue Ocean is a new User Interface (UI) and User Experience (UX) for Jenkins
+It is designed to make Jenkins UI more efficient (reduces clutter and increases the clarity)
+
+In simple words:
+Blue Ocean is a new User Interface for Jenkins and provides an interactive view for Jenkins Pipeline (and jobs)
+
+How to get Blue Ocean
+Ensure you have Jenkins 2.7 or above
+and follow the steps:
+
+Step 1
+Install Blue Ocean Plugin
+
+Step 2
+Switch to Blue Ocean View
+========================================================================
+Jenkins Beginner Session 13 - What is Pipeline in Jenkins (DevOps)
+
+What is Pipeline in Jenkins ?
+
+Pipeline - is a workflow with group of events or jobs that are chained and integrated with each other in sequence.
+Every job in a pipeline has some dependency on one or more other jobs
+----------------------------------------------------------------------------------------------
+How to install Jenkins on Amazon AWS EC2 Linux | 8 Steps
+
+1. How to download and install Jenkins on aws ec2 linux
+2. How to access Jenkins from browser
+3. How to start and stop Jenkins
+4. How to start Jenkins on different port
+5. How to uninstall Jenkins
+
+Step 1 : Connect to your Linux machine
+
+Step 2: Update Packages
+   sudo yum update
+
+Step 3 : Check Java is installed. If not install java  
+   java -version
+   sudo yum install java-1.8.0
+
+   To check and select one out of multiple java versions available
+   sudo /usr/sbin/alternatives --config java
+
+Step 4 : Download latest Jenkins code package
+   sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenk...
+
+Step 5 : Import a key file from Jenkins-CI to enable installation from the package
+   sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenk...
+
+Step 6 : Install Jenkins
+   sudo yum install jenkins
+
+Step 7 : Start jenkins
+   sudo service jenkins start
+
+Step 8 : Access Jenkins server using the public DNS of your ec2 on port 8080
+   http://{ec2-public-dns}:8080
+   example : http://3.89.79.74:8080/
+
+Note : Here you might have to allow port 8080 in your security group settings
+                     
+
+Useful tips
+
+To start jenkins on a diff port
+Update port number in /etc/sysconfig/jenkins
+
+To fetch initial admin password
+ sudo su -
+ cd /var/lib/jenkins/secrets/
+ cat initialAdminPassword
+0bcbbcab7f984af7b4171b55e9201d04
+To stop Jenkins
+ sudo service jenkins stop
+
+To uninstall Jenkins
+ sudo service jenkins stop
+ sudo yum remove jenkins
+ sudo rm -r /var/lib/jenkins
+
+============================================================================================
+Jenkins Beginner Session 14 - How to setup DELIVERY PIPELINE in Jenkins (Step by Step)
+
+How to setup Delivery Pipeline in Jenkins ?
+
+Follow along step by step
+
+Step 1
+Chain required jobs in sequence
+Add upstream/downstream jobs
+
+Step 2
+Install
+Delivery Pipeline Plugin
+
+Step 3
+Add 
+Delivery Pipeline View
+configure the view
+
+Step 4
+Run and Validate
+===========================================================================================
+Jenkins Beginner Session 15 - How to setup BUILD PIPELINE in Jenkins (Step by Step)
+--No permission to install this plugin
+How to setup BUILD PIPELINE in Jenkins ?
+
+Follow along step by step
+
+Step 1
+Chain required jobs in sequence
+Add upstream/downstream jobs
+
+How to chain jobs? Watch
+https://www.youtube.com/watch?v=ndLbn...
+
+Step 2
+Install
+Build Pipeline Plugin
+
+Step 3
+Add 
+Build Pipeline View
+configure the view
+
+Step 4
+Run and Validate
+
+____________________________________________________________
+
+Difference between Build and Delivery Pipeline:
+
+At a high level you can say Build pipeline has a smaller scope in terms of the entire process of software dev and delivery whereas delivery pipeline has a much broader scope. Also when we say delivery, build pipeline will be one of its components.
+Build Pipeline provides a view of the upstream and downstream jobs setup for the build process (typically)
+Whereas Delivery Pipeline gives the visualization of the complete Delivery Process that may include Build, Deploy, Test. In the delivery pipeline view, you can see each of these sections in a separate box.
+----------------------------------------------------
+
+Jenkins How to Trigger Job with Email | Poll Mailbox Trigger Plugin
+========================================================================
+Step 1
+--Install Poll Mailbox Trigger Plugin
+--create a new FreestyleProject "TriggerOnEmailJob"
+  --build mailbox -->poll mailbox Trigger -->provide the host , email and password. eg for gmail host is "imap.gmail.com"
+  -- for other types of mailbox conf
+	https://github.com/jenkinsci/poll-mailbox-trigger-plugin#gmail-imaps
+  --settings in google account
+	log in to gmail -->settings--> google account -->sign and security --> sign into google --> allow less secure apps to on
+   --go back to Jenkins project --> configure -->build mailbox -->poll mailbox Trigger --> advanced ---> build triggers
+Step 2
+Switch to Blue Ocean View
+==========================================
+Jenkins How to create Build Monitor View
+
+1. What is Build Monitor View plugin
+The Build Monitor plugin provides a visualization of the status and progress of selected Jenkins jobs. It displays an updated view automatically every couple of seconds using AJAX. It can easily accommodate different computer screen sizes too.
+
+2. How to add in Jenkins
+-->Go to Manage Jenkins à Manage Plugins àinstall Build Monitor plugin.
+-->Go to Jenkins Dashboard à Click on New View
+
+========================
+Jenkins and Maven 
+--download and setup maven
+
+In the Jenkins dashboard (Home screen), click Manage Jenkins from the left-hand side menu.
+--> maven plugin download
+
+step 1: prereq: maven to be installed in the system, git to be installed
+https://www.onlinetutorialspoint.com/maven/how-to-install-maven-on-windows10.html
+step 2: project cloned for example
+https://github.com/executeautomation/cucumberbasic
+	-->create a folder where we will pull the repository from git eg. d:\gitpull
+	--> open git cmd move to the d:\gitpull folder
+	--> command to pull the repo: git clone https://github.com/executeautomation/cucumberbasic
+	--> folder is downloaded in d:\gitpull
+
+=========================================
+Extra Ref:
+Jenkins Tips and Tricks
+
+https://www.youtube.com/playlist?list=PLhW3qG5bs-L8T-0JT464rkIvnUz5q4CQC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
