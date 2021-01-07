@@ -1,0 +1,67 @@
+Agenda
+Devops Overview
+Basic Devops
+Tools 
+git & git hub
+Maven
+selenium Testing
+Jenkins
+
+-----------------------------------------
+3 days 
+100% attendance
+assessment 70 % 
+attendance 
+--------------------------------
+Day 1:
+SDLC:
+change mgt
+agile
+part by part 
+stories
+sprint feature sprint 1
+
+
+e commer
+shopping --- cod
+netbanking---
+google pay---
+
+deploye in production enviroment
+
+
+dev team (dev+test)---op team  sdls
+dev ---- op  agile 
+CD -- portable CD drive
+What is Devops???
+Devops Stages:
+1.Versionizing --SCM
+login
+browse product
+add the product to card
+payment cod
+payment card payment
+deletion 
+	code mgt & i1,i2,i3  
+	github & git versioning the data
+
+2.continu integration / build :  compile ,validation, unit testing ,integration
+maven ,ant,gradle .
+3. conti testing :automation selenium , BDD 
+4. confiruartion magt & Containerization
+Tools
+SCM: git versionising and github --- remote repository  
+
+
+
+	 
+ 
+
+
+
+
+ 
+
+
+
+

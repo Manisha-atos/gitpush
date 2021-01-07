@@ -1,0 +1,29 @@
+Welcome to Git 
+git verison
+git init
+git add .
+git commit -m "first commit"
+git status
+git log
+git remote -v
+git remote add origin https://github.com/Manisha-atos/DevOps5Jan.git
+git push origin master
+git pull origin master
+git barcnch
+$ git branch develop
+$ git branch qa
+$ git checkout develop
+$ git status
+
+git & git hub
+
+git clone -- local reposi
+
+versions of you code
+
+Maven as build tool
+dependencies mgmt
+
+
+
+
